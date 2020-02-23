@@ -1,23 +1,23 @@
-#pragma once
+ï»¿#pragma once
 #ifndef CLINKLIST_H
 #define CLINKLIST_H
 
 typedef struct LINKNODE {
-    void* data;//´æÈÎºÎµÄÊı¾İ£¬ÓÃ¿ÕÖ¸Õë
-    struct LINKNODE* next;//´æµØÖ·
-}LinkNode;//linkNodeÊÇÒ»ÖÖÀàĞÍ
+    void* data;//å­˜ä»»ä½•çš„æ•°æ®ï¼Œç”¨ç©ºæŒ‡é’ˆ
+    struct LINKNODE* next;//å­˜åœ°å€
+}LinkNode;//linkNodeæ˜¯ä¸€ç§ç±»å‹
 typedef struct LINKLIST {
     LinkNode* head;
     int size;
 }LinkList;
-typedef void(*PRINTLINKNODE)(void*);//¶¨ÒåÒ»¸öº¯ÊıÖ¸Õë
+typedef void(*PRINTLINKNODE)(void*);//å®šä¹‰ä¸€ä¸ªå‡½æ•°æŒ‡é’ˆ
 
 LinkList* Init_LinkList();
 void Insert_LinkList(LinkList* link, int pos, void* data);
 void RemoveByPos_LinkList(LinkList* link, int pos);
 int Size_LinkList(LinkList* link);
-int Find_LinkList(LinkList* list, void* data);//·µ»ØÎ»ÖÃ
-void* Front_LinkList(LinkList* list);//·µ»ØÊ×½áµã£¿½áµã²»Ó¦¸ÃÊÇLinkNode*Âğ£¿
+int Find_LinkList(LinkList* list, void* data);//è¿”å›ä½ç½®
+void* Front_LinkList(LinkList* list);//è¿”å›é¦–ç»“ç‚¹ï¼Ÿç»“ç‚¹ä¸åº”è¯¥æ˜¯LinkNode*å—ï¼Ÿ
 void Print_LinkList(LinkList* list, PRINTLINKNODE print);
 void Free_LinkList(LinkList* list);
 #endif

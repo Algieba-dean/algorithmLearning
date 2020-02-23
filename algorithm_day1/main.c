@@ -1,7 +1,8 @@
-#define _CRT_SECURE_NO_WARNINGS
+Ôªø#define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include<stdio.h>
 #include<string.h>
+
 #include"CDynamicArray.h"
 #include"CLinkList.h"
 
@@ -23,7 +24,7 @@ void TestArr() {
     
     CDynamic_Array* MyArr= CDynamic_Init();
     for (int i = 0; i < 29; i++) {
-        //MyArr->pAddr[i] = i;//≤ªƒ‹’‚√¥–¥
+        //MyArr->pAddr[i] = i;//‰∏çËÉΩËøô‰πàÂÜô
         PushBack_Array(MyArr, i);
     }
     Print_Array(MyArr);

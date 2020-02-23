@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #ifndef CDYNAMICARRAY_H
 #define CDYNAMICARRAY_H
 #include<stdio.h>
@@ -12,10 +12,10 @@ typedef struct CDYNAMICARRAY {
 
 }CDynamic_Array;
 
-CDynamic_Array* CDynamic_Init();//³õÊ¼»¯
-void PushBack_Array(CDynamic_Array* arr, int value);//ÒòÎªÊÇºóÏî²åÈë£¬ÎŞĞèÖªµÀ
-void RemoveByPos_Array(CDynamic_Array* arr, int pos);//°´Î»ÖÃÉ¾³ı
-void RemoveByValue_Array(CDynamic_Array* arr, int value);//°´ÖµÉ¾³ı
+CDynamic_Array* CDynamic_Init();//åˆå§‹åŒ–
+void PushBack_Array(CDynamic_Array* arr, int value);//å› ä¸ºæ˜¯åé¡¹æ’å…¥ï¼Œæ— éœ€çŸ¥é“
+void RemoveByPos_Array(CDynamic_Array* arr, int pos);//æŒ‰ä½ç½®åˆ é™¤
+void RemoveByValue_Array(CDynamic_Array* arr, int value);//æŒ‰å€¼åˆ é™¤
 void RemoveAllByValue_Array(CDynamic_Array* arr, int value);
 
 int Find_Array(CDynamic_Array* arr, int value);
@@ -23,6 +23,6 @@ void Print_Array(CDynamic_Array* arr);
 void Clear_Array(CDynamic_Array* arr);
 int Capacity_Array(CDynamic_Array* arr);
 int Size_Array(CDynamic_Array* arr);
-int At_Array(CDynamic_Array* arr, int pos);//°´ÕÕÎ»ÖÃÈ¥»ñÈ¡¶ÔÓ¦
-void FreeSpace_Array(CDynamic_Array* arr);//ÊÍ·ÅÄÚ´æ
+int At_Array(CDynamic_Array* arr, int pos);//æŒ‰ç…§ä½ç½®å»è·å–å¯¹åº”
+void FreeSpace_Array(CDynamic_Array* arr);//é‡Šæ”¾å†…å­˜
 #endif

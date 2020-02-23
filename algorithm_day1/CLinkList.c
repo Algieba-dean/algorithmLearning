@@ -1,15 +1,15 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include"CLinkList.h"
 
 LinkList* Init_LinkList() {
-    // ³õÊ¼»¯
+    // åˆå§‹åŒ–
     LinkList* list = (LinkList*)malloc(sizeof(LinkList));
     if (NULL == list)
         return NULL;
     list->head = (LinkNode*)malloc(sizeof(LinkNode));
-    //ÎªÁË¼ò»¯¶ÔÓÚÊ×½áµãµÄÅĞ¶Ï£¬´Ë´¦¶¨ÒåÒ»¸öÊ×½áµã£¬µ«ÊÇ²»´æÈëÊı¾İ
+    //ä¸ºäº†ç®€åŒ–å¯¹äºé¦–ç»“ç‚¹çš„åˆ¤æ–­ï¼Œæ­¤å¤„å®šä¹‰ä¸€ä¸ªé¦–ç»“ç‚¹ï¼Œä½†æ˜¯ä¸å­˜å…¥æ•°æ®
     list->head->data = NULL;
     list->head->next = NULL;
     list->size = 0;
@@ -19,16 +19,16 @@ void Insert_LinkList(LinkList* list, int pos, void* data) {
     if (NULL == list||NULL==data) {
         return;
     }
-    //ÕâÀï¶Ôpos×÷Ò»¸öÓÑºÃ´¦Àí£¬¼´ÏÂ±ê²»¹æ·¶Ê±£¬Ö±½ÓÌí¼Óµ½Î²²¿
+    //è¿™é‡Œå¯¹posä½œä¸€ä¸ªå‹å¥½å¤„ç†ï¼Œå³ä¸‹æ ‡ä¸è§„èŒƒæ—¶ï¼Œç›´æ¥æ·»åŠ åˆ°å°¾éƒ¨
     if (pos<0 || pos>list->size) {
         pos = list->size;
     }
-    //ÏÖÔÚposºÏºõ¹æ·¶ÁË
-    LinkNode* newNode = (LinkNode*)malloc(sizeof(LinkNode));//¿ª±Ù¿Õ¼ä
+    //ç°åœ¨posåˆä¹è§„èŒƒäº†
+    LinkNode* newNode = (LinkNode*)malloc(sizeof(LinkNode));//å¼€è¾Ÿç©ºé—´
     newNode->data = data;
     newNode->next = NULL;
-    //È»ºóÒª±éÀúÁ´±íµ½posÎ»ÖÃ
-    LinkNode* pCurrent = list->head;//³õÊ¼Î»ÖÃÉèÎªÍ·½áµã//pCurrent²»ÓÃ¿ª±Ù¿Õ¼äÂğ£¿
+    //ç„¶åè¦éå†é“¾è¡¨åˆ°posä½ç½®
+    LinkNode* pCurrent = list->head;//åˆå§‹ä½ç½®è®¾ä¸ºå¤´ç»“ç‚¹//pCurrentä¸ç”¨å¼€è¾Ÿç©ºé—´å—ï¼Ÿ
     for (int i = 0; i < pos; i++) {
         pCurrent = pCurrent->next;
     }
@@ -40,7 +40,7 @@ void RemoveByPos_LinkList(LinkList* list, int pos) {
     if (NULL == list) {
         return;
     }
-    //É¾³ıÒ»¸ö½ÚµãºÍ²åÈëÀàËÆ£¬µ«ÊÇ²»ÄÜ×öÓÑºÃ´¦ÀíÁË
+    //åˆ é™¤ä¸€ä¸ªèŠ‚ç‚¹å’Œæ’å…¥ç±»ä¼¼ï¼Œä½†æ˜¯ä¸èƒ½åšå‹å¥½å¤„ç†äº†
     if (pos < 0 || pos >= list->size)
         return;
     //LinkNode* pCurrent = (LinkNode*)malloc(sizeof(LinkNode));
@@ -48,7 +48,7 @@ void RemoveByPos_LinkList(LinkList* list, int pos) {
     for (int i = 0; i < pos; i++) {
         pCurrent = pCurrent->next;
     }
-    LinkNode* pDel = pCurrent->next;//pDelÄ¿Ç°¾ÍÊÇÒªÉ¾³ıµÄÄÇ¸ö½áµã
+    LinkNode* pDel = pCurrent->next;//pDelç›®å‰å°±æ˜¯è¦åˆ é™¤çš„é‚£ä¸ªç»“ç‚¹
     pCurrent->next= pDel->next;
     free(pDel);
     list->size -= 1;
@@ -64,13 +64,13 @@ int Find_LinkList(LinkList* list, void* data) {
         return -1;
     int pos = -1;
     LinkNode* pCurrent= (LinkNode*)malloc(sizeof(LinkNode));
-    pCurrent = list->head->next;//ÕâÀïÊÓÍ·½áµã×÷ÎŞĞ§£¬´ÓÍ·½áµãºóµÄ½áµã¿ªÊ¼ÊÓ×÷ÓĞĞ§Êı¾İ
+    pCurrent = list->head->next;//è¿™é‡Œè§†å¤´ç»“ç‚¹ä½œæ— æ•ˆï¼Œä»å¤´ç»“ç‚¹åçš„ç»“ç‚¹å¼€å§‹è§†ä½œæœ‰æ•ˆæ•°æ®
     
     for (int i = 0; i < list->size; i++) {
         if (pCurrent->data == data) {
             pos = i;
         }
-        break;//Ò»¶¨Òª×¢ÒâÕâ¸öbreak
+        break;//ä¸€å®šè¦æ³¨æ„è¿™ä¸ªbreak
         pCurrent = pCurrent->next;
     }
     return pos;
@@ -91,9 +91,9 @@ void Free_LinkList(LinkList* list) {
     if (NULL == list) {
         return;
     }
-    //ÓÉÓÚÃ¿Ò»¸ö½áµã¶¼ÊÇÖ¸Õë£¬¹Ê´Ë¶¼ĞèÒªÒÀ´ÎÊÍ·ÅÄÚ´æ
+    //ç”±äºæ¯ä¸€ä¸ªç»“ç‚¹éƒ½æ˜¯æŒ‡é’ˆï¼Œæ•…æ­¤éƒ½éœ€è¦ä¾æ¬¡é‡Šæ”¾å†…å­˜
     LinkNode* pCurrent = list->head;
-    //ÕâÀï²»ÄÜÏÈfreeÄÚ´æ Èç¹ûÏÈÉ¾ ÄÇÃ´¾ÍÎŞ·¨ÕÒµ½ºó¼Ì½áµãÁË
+    //è¿™é‡Œä¸èƒ½å…ˆfreeå†…å­˜ å¦‚æœå…ˆåˆ  é‚£ä¹ˆå°±æ— æ³•æ‰¾åˆ°åç»§ç»“ç‚¹äº†
     LinkNode* pTemp = NULL;
     for (int i = 0; i < list->size; i++) {
         //**

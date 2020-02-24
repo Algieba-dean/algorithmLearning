@@ -34,6 +34,7 @@ int Find_Array(DynamicArray* array, int data) {
     if (NULL == array)
         return -1;
     int pos = -1;
+/*
     for (int i = array->size - 1; i >= 0; i--) {
         //逆向查找，方便删除调用查找函数的时候数组越界
         if (array->pAddr[i] == data) {
@@ -41,30 +42,40 @@ int Find_Array(DynamicArray* array, int data) {
             break;//找到之后要跳出循环
         }
     }
+
+*/
+    for (int i = 0; i < array->size; i++) {
+        //暂时改为正向->这里不会出错是因为size进行了维护 若使用的是一次性变量 那么就会出现越界
+        if (array->pAddr[i] == data) {
+            pos = i;
+            break;
+        }
+    }
     return pos;
 }
 void RemoveByPos_Array(DynamicArray* array, int pos) {
     if (NULL == array)
         return;
+    if (pos<0 || pos>array->size)
+        return;
+    for (int i = pos; i < array->size-1; i++) {
+        array->pAddr[i] = array->pAddr[i + 1];
+    }
+    array->size -= 1;
 }
 void RemoveByValue_Array(DynamicArray* array, int data) {
     if (NULL == array)
         return;
+    RemoveByPos_Array(array, Find_Array(array, data));
 }
 void RemoveAllValue_Array(DynamicArray* array, int data) {
     if (NULL == array)
         return;
+    for (int i = 0; i < array->size; i++) {
+        RemoveByValue_Array(array, data);
+    }
 }
-int Size_Array(DynamicArray* array) {
-    if (NULL == array)
-        return -1;
-    return array->size;
-}
-int Capacity_Array(DynamicArray* array) {
-    if (NULL == array)
-        return -1;
-    return array->capacity;
-}
+
 void Print_Array(DynamicArray* array) {
     if (NULL == array)
         return;
@@ -73,10 +84,31 @@ void Print_Array(DynamicArray* array) {
     }
     printf("\n--------------------------\n");
 }
-void FreeSpace_Array(DynamicArray* array) {
+void ChangeByPos_Array(DynamicArray* array, int pos, int data) {
+    if (NULL == array)
+        return;
+    if (pos<0 || pos>array->size)
+        return;
+    array->pAddr[pos] = data;
+
+}
+void ChangeByValue_Array(DynamicArray* array, int data,int newData) {
+    if (NULL == array)
+        return;
+    int pos = Find_Array(array, data);
+    ChangeByPos_Array(array,pos, newData);
+}
+void ChangeAllValue_Array(DynamicArray* array, int data,int newData) {
+    if (NULL == array)
+        return;
+    for (int i = 0; i < array->size; i++) {
+        ChangeByValue_Array(array, data, newData);
+    }
+}void FreeSpace_Array(DynamicArray* array) {
     if (NULL == array||NULL==array->pAddr)
         return;
     free(array->pAddr);
     free(array);
 }
+
 

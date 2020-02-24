@@ -141,10 +141,13 @@
     <None Include="企业链表.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DynamicArray.c" />
     <ClCompile Include="LinkList.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DynamicArray.h" />
+    <ClInclude Include="EnLinkList.h" />
     <ClInclude Include="LinkList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

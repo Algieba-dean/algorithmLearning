@@ -27,7 +27,6 @@ int main() {
 }
 void TestLink() {
     Person DongYQ, DongYS, DongYT, DongYL,FakeYQ;
-    /*
 
     strcpy_s(DongYQ.name, strlen("000") + 1, "000");
     strcpy_s(DongYS.name, strlen("111") + 1, "111");
@@ -35,14 +34,15 @@ void TestLink() {
     strcpy_s(DongYL.name, strlen("333") + 1, "333");
     strcpy_s(FakeYQ.name, strlen("111") + 1, "111");
 
-    */
     //printf("name:%s\n", DongYL.name);
 
+    /*
     strcpy_s(DongYQ.name, strlen("董云清") + 1, "董云清");
     strcpy_s(DongYS.name, strlen("董云舒") + 1, "董云舒");
     strcpy_s(DongYT.name, strlen("董云天") + 1, "董云天");
     strcpy_s(DongYL.name, strlen("董云兰") + 1, "董云兰");
     strcpy_s(FakeYQ.name, strlen("董云清") + 1, "董云清");
+    */
 
     DongYQ.age = 31;
     DongYS.age = 28;
@@ -55,7 +55,11 @@ void TestLink() {
     Insert_Link(list, 0,(LinkNode*)&DongYS);
     Insert_Link(list, 0,(LinkNode*)&DongYT);
     Insert_Link(list, 0,(LinkNode*)&DongYL);
+    printf("\n%d\n\n", Find_Link(list, (LinkNode*)&FakeYQ,Compare));
     Print_Link(list, Print);
+    Remove_Link(list, 2);
+    Print_Link(list, Print);
+
     FreeSpace_Link(list);
 
 }

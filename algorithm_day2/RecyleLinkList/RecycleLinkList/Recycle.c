@@ -26,7 +26,7 @@ int Find_Link(LinkList* list, LinkNode* node, NodeCompare compare) {
         return -1;
     int pos = -1;
     int flag = 0;
-    LinkNode* pCurrent = &(list->head);
+    LinkNode* pCurrent = list->head.next;
     for (int i = 0; i < list->size; i++) {
         flag = compare(pCurrent, node);
         if (flag == 1) {
@@ -50,7 +50,7 @@ void Remove_Link(LinkList* list, int pos){
     }
     LinkNode* pDel = pCurrent->next;
     pCurrent = pDel;
-    free(pDel);
+    //free(pDel);
 
     list->size -= 1;
 }

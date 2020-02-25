@@ -29,6 +29,9 @@
     <ClCompile Include="DynamicArray.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="EnLinkList.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkList.h">

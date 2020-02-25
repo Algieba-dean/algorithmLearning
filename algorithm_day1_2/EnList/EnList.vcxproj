@@ -144,6 +144,7 @@
     <ClCompile Include="DynamicArray.c" />
     <ClCompile Include="LinkList.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="EnLinkList.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DynamicArray.h" />

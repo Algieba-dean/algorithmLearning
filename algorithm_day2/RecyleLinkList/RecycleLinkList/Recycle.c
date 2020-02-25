@@ -4,7 +4,10 @@ LinkList* Init_Link() {
     LinkList* list = (LinkList*)malloc(sizeof(LinkList));
     list->size = 0;
     //LinkNode* node = (LinkNode*)malloc(sizeof(LinkNode));
-    list->head.next = NULL;//这个头结点是没有实际意义的头结点
+    //list->head.next = NULL;//这个头结点是没有实际意义的头结点
+    //由于是循环链表，所以指向自己就行
+    list->head.next = &(list->head);
+    //list->head.next = NULL;
     return list;
 }
 void Insert_Link(LinkList* list, int pos, LinkNode* node) {
@@ -42,7 +45,7 @@ int Find_Link(LinkList* list, LinkNode* node, NodeCompare compare) {
 void Remove_Link(LinkList* list, int pos){
     if (NULL == list)
         return;
-    if (pos<0 || pos>list->size)
+    if (pos<0 || pos>=list->size)
         return;
     LinkNode* pCurrent = list->head.next;//删除数据也是从有效数据开始
     for (int i = 0; i<pos; i++) {
@@ -59,8 +62,10 @@ void Print_Link(LinkList* list, LinkPrint print) {
         return;
     printf("~~~~~~~~~~~~~~~~~~~~~\n");
     LinkNode* pCurrent = list->head.next;//实际内容是从next开始
-    for (int i = 0; i < list->size; i++) {
+    for (int i = 0; i < list->size*3; i++) {
         print(pCurrent);
+        if (pCurrent->next == &(list->head))
+            pCurrent = pCurrent->next;
         pCurrent = pCurrent->next;
     }
     printf("______________________\n");

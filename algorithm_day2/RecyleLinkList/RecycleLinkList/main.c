@@ -4,14 +4,14 @@
 #include"Recycle.h"
 
 typedef struct PERSON {
-    LinkNode* next;
+    LinkNode node;
     char name[255];
     int age;
 }Person;
 int Compare(LinkNode* node1, LinkNode *  node2) {
     Person* p1 = (Person*)node1;
     Person* p2 = (Person*)node2;
-    if (strcmp(p1->name, p2->name) && (p1->age == p2->age))
+    if (0==(strcmp(p1->name, p2->name)) && (p1->age == p2->age))
         return 1;
     return 0;
 }
@@ -34,7 +34,13 @@ void TestLink() {
     strcpy_s(DongYL.name, strlen("333") + 1, "333");
     strcpy_s(FakeYQ.name, strlen("111") + 1, "111");
 
-    //printf("name:%s\n", DongYL.name);
+    /*
+    printf("name:%s\n", DongYQ.name);
+    printf("name:%s\n", DongYS.name);
+    printf("name:%s\n", DongYT.name);
+    printf("name:%s\n", DongYL.name);
+    printf("name:%s\n", FakeYQ.name);
+    */
 
     /*
     strcpy_s(DongYQ.name, strlen("董云清") + 1, "董云清");

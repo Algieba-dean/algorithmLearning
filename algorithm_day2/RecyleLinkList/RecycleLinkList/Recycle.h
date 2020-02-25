@@ -21,6 +21,8 @@ typedef int (*NodeCompare)(LinkNode* node1, LinkNode* node2);
 LinkList* Init_Link();
 void Insert_Link(LinkList* list, int pos, LinkNode* node);
 int Find_Link(LinkList* list, LinkNode* node, NodeCompare compare);
+void RemoveByValue_Link(LinkList* list, LinkNode* node, NodeCompare compare);
+int IsEmpty_Link(LinkList* list);
 void Remove_Link(LinkList* list, int pos);
 void Print_Link(LinkList* list, LinkPrint print);
 void FreeSpace_Link(LinkList* list);

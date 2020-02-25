@@ -45,14 +45,25 @@ int Find_Link(LinkList* list, LinkNode* node, NodeCompare compare) {
 void Remove_Link(LinkList* list, int pos){
     if (NULL == list)
         return;
-    if (pos<0 || pos>=list->size)
+    if (pos<0)
         return;
+    //LinkNode* 
     LinkNode* pCurrent = list->head.next;//删除数据也是从有效数据开始
-    for (int i = 0; i<pos; i++) {
+    if (0 == pos) {
+        pCurrent =&(list->head);
+    }
+    for (int i = 0; i<pos-1; i++) {
         pCurrent = pCurrent->next;
     }
+    int circle = pos / list->size;
+    if (circle) {
+        for (int i = 0; i < circle; i++) {
+            pCurrent = pCurrent->next;
+        }
+    }
     LinkNode* pDel = pCurrent->next;
-    pCurrent = pDel;
+    pCurrent->next = pDel->next;
+    //pCurrent = pDel;
     //free(pDel);
 
     list->size -= 1;
@@ -62,7 +73,7 @@ void Print_Link(LinkList* list, LinkPrint print) {
         return;
     printf("~~~~~~~~~~~~~~~~~~~~~\n");
     LinkNode* pCurrent = list->head.next;//实际内容是从next开始
-    for (int i = 0; i < list->size*3; i++) {
+    for (int i = 0; i < list->size*1; i++) {
         print(pCurrent);
         if (pCurrent->next == &(list->head))
             pCurrent = pCurrent->next;
@@ -70,6 +81,17 @@ void Print_Link(LinkList* list, LinkPrint print) {
     }
     printf("______________________\n");
 }
+void RemoveByValue_Link(LinkList* list, LinkNode* node, NodeCompare compare) {
+    if (NULL == list)
+        return;
+    int pos = Find_Link(list, node, compare);
+    Remove_Link(list, pos);
+}
+int IsEmpty_Link(LinkList* list) {
+    if (NULL == list)
+        return -1;
+}
+
 void FreeSpace_Link(LinkList* list) {
     if (NULL == list)
         return;
